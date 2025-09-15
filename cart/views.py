@@ -2,7 +2,11 @@ from django.shortcuts import render
 from .models import Cart,CartItem
 from .serializers import CartSerializer,CartItemSerializer
 from rest_framework import viewsets
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(
+    tags=['Cart']
+)
 class CartViewSet(viewsets.ModelViewSet):
     serializer_class = CartSerializer
 
@@ -11,7 +15,10 @@ class CartViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-    
+
+@extend_schema(
+    tags=['Cart_Item']
+)
 class CartItemViewset(viewsets.ModelViewSet):
     serializer_class = CartItemSerializer
 

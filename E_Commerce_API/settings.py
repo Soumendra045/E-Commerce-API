@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "orders.apps.OrdersConfig",
     "payments.apps.PaymentsConfig",
     "corsheaders",
+    "drf_spectacular",
+    # 'drf_spectacular_sidecar',
 ]
 
 MIDDLEWARE = [
@@ -156,5 +158,27 @@ MEDIA_ROOT = BASE_DIR / "static/media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-Commerce API',
+    'DESCRIPTION': 'This API powers the E-Commerce platform.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    
+    "TAGS": [
+        {"name": 'User-Registration', "description": "User registration"},
+        {"name": 'User', "description": "User Profile"},
+        {"name": "Product-Category", "description": "Category of product"},
+        {"name": "Product-product", "description": "Product details"},
+        {"name": "Product-Image", "description": "Image upload and view"},
+        {"name": "Product-Review", "description": "User Review details"},
+        {"name": "Cart", "description": "Cart Details"},
+        {"name": "Cart_Item", "description": "Cart Item Details"},
+        {"name": "orders", "description": "Your Order details"},
+    ],
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
