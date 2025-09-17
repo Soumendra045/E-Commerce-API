@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     'rest_framework_simplejwt',
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,11 @@ CORS_ALLOW_ALL_ORIGINS=True
 AUTH_USER_MODEL = "users.User"
 
 
+GRAPHENE = {
+    "SCHEMA": "E_Commerce_API.schema.schema"
+}
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 # STORAGES = {
@@ -179,6 +185,8 @@ REST_FRAMEWORK = {
         'user': '1000/day'
     }
 }
+
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'E-Commerce API',
     'DESCRIPTION': 'This API powers the E-Commerce platform.',
